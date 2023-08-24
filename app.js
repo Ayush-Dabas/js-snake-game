@@ -22,12 +22,10 @@ async function setFoodPos() {
 
 function handler() {
   // setFoodPos();
-  var i = 0;
-  setInterval(() => {
-    setFoodPos();
-    console.log(i);
-    var cnt = document.getElementById("count");
-    cnt.innerHTML = i;
-    i++;
-  }, interval);
+  var div = document.createElement("div");
+  div.style.width = "100px";
+  div.style.height = "10px";
+  div.style.background = "lightblue";
+  div.innerHTML = " ";
+  document.getElementById("playArea").appendChild(div);
 }
