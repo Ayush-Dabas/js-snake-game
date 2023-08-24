@@ -17,35 +17,33 @@ function drawSnake() {
   ctx.fillRect(headX * tileCount, headY * tileCount, tileSize, tileSize);
 }
 
-document.body.addEventListener("keydown", keyDown);
-
-function keyDown(event) {
-  if (event.keyCode == "keyW" || event.keyCode == 38) {
+document.body.addEventListener("keydown", function (event) {
+  if (event.code == "KeyW" || event.code == 38) {
     if (yVel == 1) {
       return;
     }
     yVel = -1;
     xVel = 0;
-  } else if (event.keyCode == "keyS" || event.keyCode == 40) {
+  } else if (event.code == "KeyS" || event.code == 40) {
     if (yVel == -1) {
       return;
     }
     xVel = 0;
     yVel = 1;
-  } else if (event.keyCode == "keyA" || event.keyCode == 37) {
+  } else if (event.code == "KeyA" || event.code == 37) {
     if (xVel == 1) {
       return;
     }
     xVel = -1;
     yVel = 0;
-  } else if (event.keyCode == "keyD" || event.keyCode == 39) {
+  } else if (event.code == "KeyD" || event.code == 39) {
     if (xVel == -1) {
       return;
     }
     xVel = 1;
     yVel = 0;
   }
-}
+});
 
 function changeSnakePosition() {
   headX = headX + xVel;
@@ -53,9 +51,14 @@ function changeSnakePosition() {
 }
 
 function drawGame() {
+  let speed = 10;
+
   clearScreen();
   drawSnake();
-  changeSnakePosition();
+  setTimeout(() => {
+    changeSnakePosition();
+    console.log("working");
+  }, 1000 / speed);
 }
 
 drawGame();
